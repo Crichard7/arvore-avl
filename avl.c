@@ -38,7 +38,48 @@ no* inserir(no *raiz, int valor, int *cresceu){
             }
         } else {
             raiz->esq = inserir(raiz->esq, valor, cresceu);
+            if(*cresceu){
+                switch(raiz->fb){
+                    case 0:
+                        raiz->fb = -1;
+                        *cresceu = 1;
+                        break;
+                    case 1:
+                        raiz->fb = 0;
+                        *cresceu = 0;
+                        break;
+                    case -1:
+                        *cresceu = 0;
+                        //o fb seria = -2
+                        return rotacionar(raiz);
+                }
+            }
         }
         return raiz;
+    }
+}
+
+no* rotacionar(no *raiz){
+    //quando o fb for maior que 0
+    //rotação a esquerda
+    if(raiz->fb > 0){
+        switch(raiz->dir->fb){
+            //o caso "0" conta para rotação simples no "remover"
+            case 0:
+            case 1:
+                return rotacaoSimplesEsq(raiz);
+            case -1:
+                return rotacaoDuplaDir(raiz);
+        }
+    }
+    else{
+        switch(raiz->esq->fb){
+            //o caso "0" conta para rotação simples no "remover"
+            case 0:
+            case -1:
+                return rotacaoSimplesDir(raiz);
+            case 1:
+                return rotacaoDuplaEsq(raiz);
+        }
     }
 }
