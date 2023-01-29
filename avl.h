@@ -4,8 +4,41 @@
 typedef struct no {
     int valor;
     struct no *esq, *dir;
-    int fb;
+    int altura;
 } no;
+
+//opção - Criar novo nó
+no* novoNo(int valor);
+
+//opção - Comparar altura
+int maior(int a, int b);
+
+//opção - Calcular altura de um nó
+int alturaDoNo(no *No);
+
+//opção - Calcular o fator de balanço de um nó
+int fatorDeBalanco(no *No);
+
+//opção - Rotacionar uma vez à esquerda
+no* rotacaoSimplesEsq(no *raiz);
+
+//opção - Rotacionar um vez à direita
+no* rotacaoSimplesDir(no *r);
+
+//opção - Rotacionar à esquerda e à direita(rotação dupla esquerda)
+no* rotacaoDuplaEsq(no *r);
+
+//opção - Rotacionar à direita e à esquerda(rotação dupla direita)
+no* rotacaoDuplaDir(no *r);
+
+//opção - Inserir
+no* inserir(no *raiz, int valor);
+
+//opção - Balancear
+no* balancear(no *raiz);
+
+//opção - Remover
+no* remover(no *raiz, int valor);
 
 //opção 1 - Inserir
 no* inserir(no *raiz, int valor int *cresceu);
