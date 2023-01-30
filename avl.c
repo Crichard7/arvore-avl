@@ -24,7 +24,7 @@ int maior(int a, int b){
 //Calcula e retorna a altura de um nó
 int alturaDoNo(no *No){
     //Caso o nó seja NULL será retornado o valor: -1
-    if(no == NULL)
+    if(No == NULL)
         return -1;
     else
         return No->altura;
@@ -58,7 +58,7 @@ no* rotacaoSimplesEsq(no *r){
 
 //Rotaciona à direita
 no* rotacaoSimplesDir(no *r){
-    no *y, f;
+    no *y, *f;
 
     y = r->esq;
     f = y->dir;
@@ -114,7 +114,7 @@ no* balancear(no *raiz){
         raiz = rotacaoSimplesEsq(raiz);
 
     //Rotação Simples à direita
-    else if(fb > 1 && fatorDeBalanco(raiz->esquerda) >= 0)
+    else if(fb > 1 && fatorDeBalanco(raiz->esq) >= 0)
         raiz = rotacaoSimplesDir(raiz);
 
     //Rotação Dupla à esquerda
@@ -182,4 +182,28 @@ no* remover(no *raiz, int valor){
         raiz = balancear(raiz);
 
         return raiz;
+}
+
+void preOrder(no *raiz){
+    if(raiz != NULL){
+        printf("[%d]", raiz->valor);
+        preOrder(raiz->esq);
+        preOrder(raiz->dir);
+    }
+}
+
+void inOrder(no *raiz){
+    if(raiz != NULL){
+        inOrder(raiz->esq);
+        printf("[%d]", raiz->valor);
+        inOrder(raiz->dir);
+    }
+}
+
+void posOrder(no *raiz){
+    if(raiz != NULL){
+        posOrder(raiz->esq);
+        posOrder(raiz->dir);
+        printf("[%d]", raiz->valor);
+    }
 }
