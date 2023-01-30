@@ -20,7 +20,7 @@ int alturaDoNo(no *No);
 int fatorDeBalanco(no *No);
 
 //opção - Rotacionar uma vez à esquerda
-no* rotacaoSimplesEsq(no *raiz);
+no* rotacaoSimplesEsq(no *r);
 
 //opção - Rotacionar um vez à direita
 no* rotacaoSimplesDir(no *r);
@@ -40,6 +40,16 @@ no* balancear(no *raiz);
 //opção - Remover
 no* remover(no *raiz, int valor);
 
+//opção - Imprimir pré ordem
+void preOrder(no *raiz);
+
+//opção - Imprimir em ordem
+void inOrder(no *raiz);
+
+//opção - Imprimir pós ordem
+void posOrder(no *raiz);
+
+/*
 //opção 1 - Inserir
 no* inserir(no *raiz, int valor int *cresceu);
 
@@ -81,7 +91,7 @@ no* rotacaoSimplesDir(no *raiz);
 
 no* rotacaoDuplaEsq(no *raiz);
 
-no* rotacaoDuplaDir(no *raiz);
+no* rotacaoDuplaDir(no *raiz);*/
 
 
 #endif
