@@ -7,7 +7,7 @@ int main(){
     int opcao, valor;
 
     do{
-        //printf("\nArvore AVL\n1- Inserir\n2 - Imprimir em ordem\n3 - Buscar valor\n4 - Calcualr altura\n5 - Calcular quantidade de nos\n6 - Calcular quantidade de folhas\n7 - Remover\n0 - Sair");
+        //printf("\nArvore AVL\n1- Inserir\n2 - Imprimir\n3 - Buscar valor\n4 - Calcualr altura\n5 - Calcular quantidade de nos\n6 - Calcular quantidade de folhas\n7 - Remover\n0 - Sair");
         //printf("\nDigite uma opcao: \n");
         scanf("%d", &opcao);
         switch(opcao){
@@ -18,7 +18,7 @@ int main(){
                 raiz = inserir(raiz, valor);
                 break;
             case 2:
-                //Imprimir em Ordem
+                //Imprimir
                 preOrder(raiz);
                 printf("\n");
                 inOrder(raiz);
