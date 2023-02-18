@@ -19,7 +19,11 @@ int main(){
                 break;
             case 2:
                 //Imprimir em Ordem
+                preOrder(raiz);
+                printf("\n");
                 inOrder(raiz);
+                printf("\n");
+                posOrder(raiz);
                 printf("\n");
                 break;
             /*case 3:
