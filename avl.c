@@ -143,7 +143,7 @@ no* remover(no *raiz, int valor){
                 return NULL;
             }
             else{
-                //remoove nós que possuem 2 filhos
+                //remove nós que possuem 2 filhos
                 if(raiz->esq != NULL && raiz->dir != NULL){
                     no *aux = raiz->esq;
                     while(aux->dir != NULL)
