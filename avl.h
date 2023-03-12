@@ -1,97 +1,76 @@
 #ifndef AVL_H
 #define AVL_H
 
-typedef struct no {
-    int valor;
-    struct no *esq, *dir;
+typedef struct filme{
+    char *titulo;
+    char genero[31];
+    int lancamento;
+    float IMDb;
+    int codigo;
+} dado;
+
+typedef struct indice{
+    int chave;
+    int indice;
+} tipo_dado;
+
+typedef struct no_avl {
+    tipo_dado *dado;
+    struct no_avl *esq, *dir;
     int altura;
-} no;
+} no_avl;
+
+typedef no_avl * arvore_avl;
+
+typedef struct tabela{
+        FILE *arquivo_dados;
+        arvore_avl indices;
+} tabela;
+
+//Tabela
+int inicializarTabela(tabela *tab);
+void finalizar(tabela *tab);
+void adicionarFilme(tabela *tab, dados *filme);
 
 //opção - Criar novo nó
-no* novoNo(int valor);
-
+arvore_avl novo_no_avl(int valor);
 //opção - Comparar altura
 int maior(int a, int b);
-
 //opção - Calcular altura de um nó
-int alturaDoNo(no *No);
-
+int alturaDoNo(arvore_avl No);
 //opção - Calcular o fator de balanço de um nó
-int fatorDeBalanco(no *No);
-
+int fatorDeBalanco(arvore_avl No);
 //opção - Rotacionar uma vez à esquerda
-no* rotacaoSimplesEsq(no *r);
-
+arvore_avl rotacaoSimplesEsq_avl(arvore_avl r);
 //opção - Rotacionar um vez à direita
-no* rotacaoSimplesDir(no *r);
-
+arvore_avl rotacaoSimplesDir_avl(arvore_avl r);
 //opção - Rotacionar à esquerda e à direita(rotação dupla esquerda)
-no* rotacaoDuplaEsq(no *r);
-
+arvore_avl rotacaoDuplaEsq_avl(arvore_avl r);
 //opção - Rotacionar à direita e à esquerda(rotação dupla direita)
-no* rotacaoDuplaDir(no *r);
-
+arvore_avl rotacaoDuplaDir_avl(arvore_avl r);
 //opção - Inserir
-no* inserir(no *raiz, int valor);
-
+arvore_avl adicionar_avl(int valor, arvore_avl raiz);
 //opção - Balancear
-no* balancear(no *raiz);
-
+arvore_avl balancear(arvore_avl raiz);
 //opção - Remover
-no* remover(no *raiz, int valor);
-
+arvore_avl remover_avl(int valor, arvore_avl raiz);
 //opção - Imprimir pré ordem
-void preOrder(no *raiz);
-
+void preOrder_avl(arvore_avl raiz, tabela *tab);
 //opção - Imprimir em ordem
-void inOrder(no *raiz);
-
+void inOrder_avl(arvore_avl raiz, tabela *tab);
 //opção - Imprimir pós ordem
-void posOrder(no *raiz);
+void posOrder_avl(arvore_avl raiz, tabela *tab);
+void imprimir_elemento(arvore_avl raiz, tabela *tab);
+tipo_dado * maior_elemento(arvore_avl raiz);
+tipo_dado * menor_elemento(arvore_avl raiz);
+dado * ler_dados();
+void tirar_enter(char *string);
 
-/*
-//opção 1 - Inserir
-no* inserir(no *raiz, int valor int *cresceu);
+filme * procurarFilme(tabela *tab, int chave);
 
-//opção 2 - Imprimir pré ordem
-void preOrder(no *raiz);
-
-//opção 3 - Imprimir em ordem
-void inOrder(no *raiz);
-
-//opção 4 - Imprimir pós ordem
-void posOrder(no *raiz);
-
-//opção 5 - Buscar elementos na árvore bst
-no* buscar(no* raiz, int valor);
-
-//opção 6 - Calcular altura da árvore bst
-int altura(no *raiz);
-
-// opção 7 - Calcular quantidade de nós da árvore bst
-int qtd_nos(no *raiz);
-
-// opção 8 - Calcular a quantidade de folhas da árvore bst
-int qtd_folhas(no *raiz);
-
-// opção 9 - remover nó da árvore bst
-no* remover(no *raiz, int valor);
-
-int maior(int  a, int b);
-
-int maiorElemento(no *raiz);
-
-int menorElemento(no *raiz);
-
-no* rotacionar(no *raiz);
-
-no* rotacaoSimplesEsq(no *raiz);
-
-no* rotacaoSimplesDir(no *raiz);
-
-no* rotacaoDuplaEsq(no *raiz);
-
-no* rotacaoDuplaDir(no *raiz);*/
+void salvar_arquivo(char *nome, arvore_avl a);
+void salvar_auxiliar(arvore_avl, FILE *arq);
+arvore_avl carregar_arquivo(char *nome, arvore_avl a);
 
 
 #endif
